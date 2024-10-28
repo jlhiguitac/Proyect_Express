@@ -1,6 +1,7 @@
 //Servidor express
 const express = require('express')
 const app = express()
+const otra = []
 const port = process.env.PORT || 3000
 //Middleware es cors npm
 const cors = require('cors')
