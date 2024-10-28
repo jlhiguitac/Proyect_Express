@@ -1,6 +1,6 @@
 //Bcrypt
 const bcrypt = require('bcrypt');
-const connection = require('./coneccion');
+const connection = require('./conexion');
 const saltRounds = 10;
 
 const login = async (req, res) => {

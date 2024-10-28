@@ -1,7 +1,7 @@
 //Bcrypt
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const connection = require('./coneccion');
+const connection = require('./conexion');
 
 const registro = async (req, res) => {//recibimos datos.usuario y datos.clave
     if (!req.session.usuario) {

@@ -1,4 +1,4 @@
-const connection = require("./coneccion");
+const connection = require("./conexion");
 
 const obtenerUsuarios = async (req, res) => {//vamos a req un json de los usuarios
     if (!req.session.usuario) {

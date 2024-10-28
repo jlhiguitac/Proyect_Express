@@ -4,10 +4,6 @@ const app = express()
 const port = 3000
 //Middleware es cors npm
 const cors = require('cors')
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true, //credenciales a diferentes servidores
-})) //crear conección de cors
 //express-session
 const session = require('express-session')
 // md5 seguridad
@@ -19,9 +15,19 @@ const { obtenerUsuarios, eliminarUsuarios } = require('./usuarios');
 const validar = require('./validar')
 const cerrarSesion = require('./salir')
 
+//crear conexión de cors
+app.use(cors({
+  origin: process.env.URLFRONTEND || 'http://localhost:5173',
+  credentials: true, //credenciales a diferentes servidores
+}))
+
 //Express-session
 app.use(session({
-  secret: 'asasdfasdfasdfasdafsasdfasdfasfg'
+  secret: process.env.SECRETSESSION || 'asasdfasdfasdfasdafsasdfasdfasfg',
+  proxy: process.env.NODE_ENV === 'production',
+  cookie: {
+    secure:process.env.NODE_ENV === 'production',
+    sameSite:'none'}
 }))
 
 //Rutas
